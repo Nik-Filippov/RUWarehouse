@@ -47,6 +47,9 @@ public class Warehouse {
      */
     private void addToEnd(int id, String name, int stock, int day, int demand) {
         // IMPLEMENT THIS METHOD
+        Product newProd = new Product(id, name, stock, day, demand);
+        int sectorId = Integer.parseInt((Integer.toString(id)).substring(Integer.toString(id).length() - 1));
+        sectors[sectorId].add(newProd);
     }
 
     /**
