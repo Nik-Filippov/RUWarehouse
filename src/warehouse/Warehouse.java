@@ -59,6 +59,10 @@ public class Warehouse {
      */
     private void fixHeap(int id) {
         // IMPLEMENT THIS METHOD
+        int sectorId = Integer.parseInt((Integer.toString(id)).substring(Integer.toString(id).length() - 1));
+        if(sectors[sectorId].getSize() > 1){
+            sectors[sectorId].swim(sectors[sectorId].getSize());
+        }
     }
 
     /**

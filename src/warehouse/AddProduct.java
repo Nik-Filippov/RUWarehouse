@@ -7,8 +7,8 @@ import java.util.ArrayList;
  */
 public class AddProduct {
     public static void main(String[] args) {
-        StdIn.setFile("addtoend.in");
-        StdOut.setFile("addtoend.out");
+        StdIn.setFile("fixheap.in");
+        StdOut.setFile("fixheap.out");
         Warehouse w = new Warehouse();
         int i = 0;
         int numProducts = 0;
