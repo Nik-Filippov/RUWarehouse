@@ -72,6 +72,12 @@ public class Warehouse {
      */
     private void evictIfNeeded(int id) {
        // IMPLEMENT THIS METHOD
+       int sectorId = Integer.parseInt((Integer.toString(id)).substring(Integer.toString(id).length() - 1));
+       if(sectors[sectorId].getSize() == 5){
+            sectors[sectorId].swap(1, sectors[sectorId].getSize());
+            sectors[sectorId].deleteLast();
+            sectors[sectorId].sink(1);
+       }
     }
 
     /**
