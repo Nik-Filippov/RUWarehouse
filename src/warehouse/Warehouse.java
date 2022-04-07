@@ -104,7 +104,15 @@ public class Warehouse {
      * @param id The id of the product to delete
      */
     public void deleteProduct(int id) {
-        // IMPLEMENT THIS METHOD
+        for(int i = 0; i < sectors.length; i++){
+            for(int j = 0; j < sectors[i].getSize(); j++){
+                if(sectors[i].get(j + 1).getId() == id){
+                    sectors[i].swap(j + 1, sectors[i].getSize());
+                    sectors[i].deleteLast();
+                    sectors[i].sink(j + 1);
+                }
+            }
+        }
     }
     
     /**
