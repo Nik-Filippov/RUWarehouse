@@ -124,7 +124,18 @@ public class Warehouse {
      * @param amount The amount purchased
      */
     public void purchaseProduct(int id, int day, int amount) {
-        // IMPLEMENT THIS METHOD
+        for(int i = 0; i < sectors.length; i++){
+            for(int j = 0; j < sectors[i].getSize(); j++){
+                if(sectors[i].get(j + 1).getId() == id){
+                    if(amount <= sectors[i].get(j + 1).getStock()){
+                        sectors[i].get(j + 1).setLastPurchaseDay(day);
+                        sectors[i].get(j + 1).updateStock(-amount);
+                        sectors[i].get(j + 1).setDemand(sectors[i].get(j + 1).getDemand() + amount);
+                        sectors[i].swim(j + 1);
+                    }
+                }
+            }
+        }
     }
     
     /**
