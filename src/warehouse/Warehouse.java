@@ -147,7 +147,25 @@ public class Warehouse {
      * @param demand Initial demand of the item to add
      */
     public void betterAddProduct(int id, String name, int stock, int day, int demand) {
-        // IMPLEMENT THIS METHOD
+        int sectorId = Integer.parseInt((Integer.toString(id)).substring(Integer.toString(id).length() - 1));
+        if(sectors[sectorId].getSize() == 5){
+            boolean isProdAdded = false;
+            for(int i = 0; i < sectors.length; i++){
+                if(sectors[i].getSize() < 5){
+                    int newId = Integer.parseInt((Integer.toString(id)).substring(0, Integer.toString(id).length() - 1) + Integer.toString(i));
+                    addToEnd(newId, name, stock, day, demand);
+                    fixHeap(newId);
+                    isProdAdded = true;
+                    break;
+                }
+            }
+            if(!isProdAdded){
+                addProduct(id, name, stock, day, demand);
+            }
+        }
+        else{
+            addProduct(id, name, stock, day, demand);
+        }
     }
 
     /*
