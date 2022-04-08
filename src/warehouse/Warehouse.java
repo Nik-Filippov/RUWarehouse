@@ -150,7 +150,14 @@ public class Warehouse {
         int sectorId = Integer.parseInt((Integer.toString(id)).substring(Integer.toString(id).length() - 1));
         if(sectors[sectorId].getSize() == 5){
             boolean isProdAdded = false;
-            for(int i = 0; i < sectors.length; i++){
+            int i = sectorId;
+            do{
+                if(i == 9){
+                    i = 0;
+                }
+                else{
+                    i++;
+                }
                 if(sectors[i].getSize() < 5){
                     int newId = Integer.parseInt((Integer.toString(id)).substring(0, Integer.toString(id).length() - 1) + Integer.toString(i));
                     addToEnd(newId, name, stock, day, demand);
@@ -158,7 +165,7 @@ public class Warehouse {
                     isProdAdded = true;
                     break;
                 }
-            }
+            }while(sectorId != i);
             if(!isProdAdded){
                 addProduct(id, name, stock, day, demand);
             }
